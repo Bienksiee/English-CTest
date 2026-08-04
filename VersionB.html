@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English C-Test Version B</title>
+
+<style>
+
+body{
+    font-family: Arial, sans-serif;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    line-height: 1.8;
+}
+
+.gap{
+    width:70px;
+    border:none;
+    border-bottom:2px solid black;
+}
+
+#test{
+    display:none;
+}
+
+#thankyou{
+    display:none;
+}
+
+button{
+    padding:10px 20px;
+    font-size:16px;
+    margin-top:20px;
+}
+
+</style>
+
+</head>
+<body>
+
+<div id="intro">
+
+<h1>English C-Test Version B</h1>
+
+<p>
+Complete the missing letters using context.
+</p>
+
+<p>
+Participant ID:
+<input type="text" id="participantID">
+</p>
+
+<button type="button" onclick="startTest()">
+Start Test
+</button>
+
+</div>
+
+<div id="test">
+
+<h2>The Decline in Reading</h2>
+
+<p>
+The decline in reading is a growing concern.
+</p>
+
+<p>
+
+With the rise of digi<input class="gap" id="q1">
+media, peo<input class="gap" id="q2">
+are spend<input class="gap" id="q3">
+less time with prin<input class="gap" id="q4">
+books.
+
+This shift imp<input class="gap" id="q5">
+our abil<input class="gap" id="q6">
+to focus and thi<input class="gap" id="q7">
+critically, and reading not only enha<input class="gap" id="q8">
+vocabulary but also stimu<input class="gap" id="q9">
+imagination.
+
+However, the conve<input class="gap" id="q10">
+of getting quick infor<input class="gap" id="q11">
+from screens often outwe<input class="gap" id="q12">
+the eff<input class="gap" id="q13">
+of rea<input class="gap" id="q14">
+a book.
+
+Many people now pref<input class="gap" id="q15">
+shorter forms of text.
+
+</p>
+
+<p>
+To combat this trend, it is essential to promote the joy of reading from a young age.
+</p>
+
+
+<hr>
+
+<h2>Generation Gaps</h2>
+
+<p>
+Generation gaps are the differences in opinions, values, and behaviors between younger and older generations.
+</p>
+
+<p>
+
+These gaps can le<input class="gap" id="q16">
+to misundersta<input class="gap" id="q17">
+and conf<input class="gap" id="q18">,
+especially in fami<input class="gap" id="q19">.
+
+For instance, while older genera<input class="gap" id="q20">
+might value tradi<input class="gap" id="q21">,
+younger people often emb<input class="gap" id="q22">
+change and innova<input class="gap" id="q23">.
+
+Technology plays a signi<input class="gap" id="q24">
+role in widen<input class="gap" id="q25">
+these gaps, as younger genera<input class="gap" id="q26">
+are more adept at using digi<input class="gap" id="q27">
+tools.
+
+These differences can al<input class="gap" id="q28">
+create chall<input class="gap" id="q29">
+and opport<input class="gap" id="q30">
+for learning.
+
+</p>
+
+<p>
+By understanding and respecting each other's perspectives, generations can bridge the gap.
+</p>
+
+<button onclick="submitTest()">
+Submit
+</button>
+
+</div>
+
+<div id="thankyou">
+
+<h2>
+Thank you for completing the test.
+</h2>
+
+</div>
+
+<script>
+
+const answers = [
+
+"tal",
+"ple",
+"ing",
+"ted",
+"acts",
+"ity",
+"nk",
+"nces",
+"lates",
+"nience",
+"mation",
+"ighs",
+"ort",
+"ding",
+"er",
+
+"ad",
+"ndings",
+"lict",
+"lies",
+"tions",
+"tion",
+"race",
+"tion",
+"ficant",
+"ing",
+"tions",
+"tal",
+"so",
+"enges",
+"unities"
+
+];
+
+function startTest(){
+
+    document.getElementById("intro").style.display = "none";
+    document.getElementById("test").style.display = "block";
+
+}
+
+async function submitTest(){
+
+    let score = 0;
+    let responses = {};
+
+    for(let i = 1; i <= 15; i++){
+
+        let response =
+            document.getElementById("q" + i)
+            .value
+            .trim()
+            .toLowerCase();
+
+        responses["q" + i] = response;
+
+        if(response === answers[i - 1]){
+            score++;
+        }
+
+    }
+
+    const result = {
+
+        participantID:
+            document.getElementById("participantID").value,
+
+        version: "B",
+
+        rawScore: score,
+
+        percentage:
+            Math.round((score / 15) * 100),
+
+        responses: responses
+
+    };
+
+    try{
+
+        await fetch(
+            "https://script.google.com/macros/s/AKfycbxspsHu6B1JOfnkARRET2YiXoYBSmSedAG0xMtojVHm375tP3wLgOUiug1PxCPWP_xJ5w/exec",
+            {
+                method: "POST",
+                mode: "no-cors",
+                body: JSON.stringify(result)
+            }
+        );
+
+    } catch(error){
+
+        console.error(error);
+
+    }
+
+    document.getElementById("test").style.display = "none";
+    document.getElementById("thankyou").style.display = "block";
+
+}
+
+</script>
+
+</body>
+</html>

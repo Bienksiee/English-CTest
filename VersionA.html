@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English C-Test Version A</title>
+
+<style>
+
+body{
+    font-family: Arial, sans-serif;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    line-height: 1.8;
+}
+
+.gap{
+    width:70px;
+    border:none;
+    border-bottom:2px solid black;
+}
+
+#test{
+    display:none;
+}
+
+#thankyou{
+    display:none;
+}
+
+button{
+    padding:10px 20px;
+    font-size:16px;
+    margin-top:20px;
+}
+
+</style>
+
+</head>
+<body>
+
+<div id="intro">
+
+<h1>English C-Test Version A</h1>
+
+<p>
+Complete the missing letters using context.
+</p>
+
+<p>
+Participant ID:
+<input type="text" id="participantID">
+</p>
+
+<button type="button" onclick="startTest()">
+Start Test
+</button>
+
+</div>
+
+<div id="test">
+
+<h2>Electric Scooters</h2>
+
+<p>
+Electric scooters have totally changed the way I get around the city.
+</p>
+
+<p>
+They are incre<input class="gap" id="q1">
+handy for tho<input class="gap" id="q2">
+short tri<input class="gap" id="q3">,
+and ha<input class="gap" id="q4">
+made dai<input class="gap" id="q5">
+life so much eas<input class="gap" id="q6">.
+
+One of the be<input class="gap" id="q7">
+things about th<input class="gap" id="q8">
+is how th<input class="gap" id="q9">
+help you avoid traf<input class="gap" id="q10">
+jams, wh<input class="gap" id="q11">
+is a real times<input class="gap" id="q12">
+during rush hou<input class="gap" id="q13">.
+
+It is no won<input class="gap" id="q14">
+they are so pop<input class="gap" id="q15">.
+</p>
+
+<p>
+What also makes them so appealing is their eco-friendliness; no pollution, just a smooth, clean ride. What's not to like!
+</p>
+<hr>
+
+<h2>School Shyness</h2>
+
+<p>
+Starting a new school year always brings a mix of excitement and anxiety.
+</p>
+
+<p>
+
+For someone sh<input class="gap" id="q16">
+like me, the anxi<input class="gap" id="q17">
+often oversh<input class="gap" id="q18">
+the exci<input class="gap" id="q19">.
+
+Walking into a class<input class="gap" id="q20">
+full of unfa<input class="gap" id="q21">
+faces can feel overwhe<input class="gap" id="q22">.
+
+I often sit quie<input class="gap" id="q23">,
+hoping nobody will appr<input class="gap" id="q24">
+me, and the fear of say<input class="gap" id="q25">
+the wrong th<input class="gap" id="q26">
+or being jud<input class="gap" id="q27">
+keeps me from spea<input class="gap" id="q28">
+up.
+
+Over time, how<input class="gap" id="q29">,
+I have lear<input class="gap" id="q30">
+that taking small steps can help.
+
+</p>
+
+<p>
+Little by little, I'm getting my shyness under control.
+</p>
+
+<button onclick="submitTest()">
+Submit
+</button>
+
+</div>
+
+<div id="thankyou">
+
+<h2>
+Thank you for completing the test.
+</h2>
+
+</div>
+
+<script>
+
+const answers = [
+"dibly",
+"se",
+"ps",
+"ve",
+"ly",
+"ier",
+"st",
+"em",
+"ey",
+"fic",
+"ich",
+"aver",
+"rs",
+"der",
+"ular"
+];
+
+function startTest(){
+
+    document.getElementById("intro").style.display = "none";
+    document.getElementById("test").style.display = "block";
+
+}
+
+async function submitTest(){
+
+    let score = 0;
+    let responses = {};
+
+    for(let i = 1; i <= 15; i++){
+
+        let response =
+            document.getElementById("q" + i)
+            .value
+            .trim()
+            .toLowerCase();
+
+        responses["q" + i] = response;
+
+        if(response === answers[i - 1]){
+            score++;
+        }
+
+    }
+
+    const result = {
+
+        participantID:
+            document.getElementById("participantID").value,
+
+        version: "A",
+
+        rawScore: score,
+
+        percentage:
+            Math.round((score / 15) * 100),
+
+        responses: responses
+
+    };
+
+    try{
+
+        await fetch(
+            "https://script.google.com/macros/s/AKfycbxspsHu6B1JOfnkARRET2YiXoYBSmSedAG0xMtojVHm375tP3wLgOUiug1PxCPWP_xJ5w/exec",
+            {
+                method: "POST",
+                mode: "no-cors",
+                body: JSON.stringify(result)
+            }
+        );
+
+    } catch(error){
+
+        console.error(error);
+
+    }
+
+    document.getElementById("test").style.display = "none";
+    document.getElementById("thankyou").style.display = "block";
+
+}
+
+</script>
+
+</body>
+</html>
