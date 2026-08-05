@@ -45,7 +45,7 @@ button{
 <h1>English C-Test Version A</h1>
 
 <p>
-Complete the missing letters using context.
+ The C-test comprises two texts in which every second word is missing half of its letters. If a word has an uneven number of letters, then half + 1 of the letters will be missing. You have to complete the words using context.
 </p>
 
 <p>
@@ -173,7 +173,7 @@ async function submitTest(){
     let score = 0;
     let responses = {};
 
-    for(let i = 1; i <= 15; i++){
+    for(let i = 1; i <= 30; i++){
 
         let response =
             document.getElementById("q" + i)
@@ -199,7 +199,7 @@ async function submitTest(){
         rawScore: score,
 
         percentage:
-            Math.round((score / 15) * 100),
+            Math.round((score / 30) * 100),
 
         responses: responses
 
