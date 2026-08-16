@@ -61,74 +61,73 @@ Start Test
 
 <div id="test">
 
-<h2>Remote Work</h2>
+<h2>Student Advice</h2>
 
 <p>
-Remote work has its challenges, one major downside being the lack of social interaction.
+There are certain things which no student can do without and others which may not be as necessary as you thought.
 </p>
 
 <p>
+It m<input class="gap" id="q1">
+be worth considering so<input class="gap" id="q2">
+small hi<input class="gap" id="q3">.
 
-Working from ho<input class="gap" id="q1">
-can lead to feel<input class="gap" id="q2">
-of isolation, and you mi<input class="gap" id="q3">
-out on spont<input class="gap" id="q4">
-conversations with coll<input class="gap" id="q5">
-that are always a feat<input class="gap" id="q6">
-of fixed workpl<input class="gap" id="q7">.
+You m<input class="gap" id="q4">
+find your<input class="gap" id="q5">
+in ne<input class="gap" id="q6">
+of elect<input class="gap" id="q7">
+appliances su<input class="gap" id="q8">
+as li<input class="gap" id="q9">
+bulbs, adap<input class="gap" id="q10">
+or pl<input class="gap" id="q11">.
 
-Moreover, remote wo<input class="gap" id="q8">
-often blu<input class="gap" id="q9">
-the line between pers<input class="gap" id="q10">
-and profes<input class="gap" id="q11">
-life.
+These c<input class="gap" id="q12">
+be obta<input class="gap" id="q13">
+from ma<input class="gap" id="q14">
+places.
 
-Even though you are at ho<input class="gap" id="q12">,
-it is often diffi<input class="gap" id="q13">
-to swi<input class="gap" id="q14">
-off<input class="gap" id="q15">.
-
+GILL i<input class="gap" id="q15">
+a go<input class="gap" id="q16">
+hardware sh<input class="gap" id="q17">
+and try<input class="gap" id="q18">
+to fi<input class="gap" id="q19">
+it i<input class="gap" id="q20">
+a chal<input class="gap" id="q21">.
 </p>
 
 <p>
-While remote work offers flexibility, it's important to be aware of these potential downsides.
+It is hidden in a little alley leading off High Street called Wheatsheaf Yard.
 </p>
 
 <hr>
 
-<h2>Exotic Pets</h2>
+<h2>Job Market</h2>
 
 <p>
-Have you ever thought about getting an exotic pet?
+You don't need a book to tell you what it's like looking for a job in a tough market. Unemployment levels are rarely out of the news.
 </p>
 
 <p>
+There are ple<input class="gap" id="q22">
+of peo<input class="gap" id="q23">
+competing f<input class="gap" id="q24">
+jobs, a<input class="gap" id="q25">
+employers ha<input class="gap" id="q26">
+their pi<input class="gap" id="q27">
+from a qui<input class="gap" id="q28">
+considerable num<input class="gap" id="q29">
+of candi<input class="gap" id="q30">.
 
-Sure, having a sn<input class="gap" id="q16">,
-parrot, or even a ti<input class="gap" id="q17">
-sounds rea<input class="gap" id="q18">
-cool, but it is not all fun and ga<input class="gap" id="q19">.
-
-These anim<input class="gap" id="q20">
-need special ca<input class="gap" id="q21">,
-diets, and enviro<input class="gap" id="q22">
-that can be tri<input class="gap" id="q23">
-to manage.
-
-Plus, they can car<input class="gap" id="q24">
-diseases that are harm<input class="gap" id="q25">
-to humans and other pe<input class="gap" id="q26">.
-
-Before getting one, make su<input class="gap" id="q27">
-you under<input class="gap" id="q28">
-the respons<input class="gap" id="q29">
-and prep<input class="gap" id="q30">
-required.
-
-</p>
-
-<p>
-If in doubt, seek advice from experienced exotic pet owners or professionals.
+Friends a<input class="gap" id="q31">
+family wi<input class="gap" id="q32">
+almost glee<input class="gap" id="q33">
+tell y<input class="gap" id="q34">
+about ma<input class="gap" id="q35">
+people w<input class="gap" id="q36">
+have be<input class="gap" id="q37">
+forced t<input class="gap" id="q38">
+take poo<input class="gap" id="q39">
+paid jobs.
 </p>
 
 <button onclick="submitTest()">
@@ -149,37 +148,47 @@ Thank you for completing the test.
 
 const answers = [
 
+"ay",
 "me",
-"ings",
-"ss",
-"aneous",
-"eagues",
-"ure",
-"aces",
-"rk",
-"rs",
-"onal",
-"sional",
-"me",
-"cult",
-"tch",
-"off",
+"nts",
+"ay",
+"self",
+"ed",
+"rical",
+"ch",
+"ght",
+"ters",
+"ugs",
+"an",
+"ined",
+"ny",
+"s",
+"od",
+"op",
+"ing",
+"nd",
+"s",
+"lenge",
 
-"ake",
-"ger",
-"lly",
-"mes",
-"als",
-"re",
-"nments",
-"cky",
-"ry",
-"ful",
-"ts",
-"re",
-"stand",
-"ibility",
-"aration"
+"nty",
+"ple",
+"or",
+"nd",
+"ve",
+"ck",
+"te",
+"ber",
+"dates",
+
+"nd",
+"ll",
+"fully",
+"ou",
+"ny",
+"ho",
+"en",
+"o",
+"rly",
 
 ];
 
@@ -195,7 +204,7 @@ async function submitTest(){
     let score = 0;
     let responses = {};
 
-    for(let i = 1; i <= 30; i++){
+    for(let i = 1; i <= 39; i++){
 
         let response =
             document.getElementById("q" + i)
@@ -221,7 +230,7 @@ async function submitTest(){
         rawScore: score,
 
         percentage:
-            Math.round((score / 30) * 100),
+            Math.round((score / 39) * 100),
 
         responses: responses
 
