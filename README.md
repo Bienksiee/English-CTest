@@ -43,9 +43,16 @@ To use your own spreadsheet:
 
 1. Create a new Google Sheet.
 2. Open **Extensions → Apps Script**.
-3. Create and deploy a Web App.
-4. Copy the Web App URL.
-5. Replace the URL in the HTML files inside the `fetch()` function.
+3. Create a new Apps Script project.
+4. Paste the data-collection script into the editor and save it.
+5. Click Deploy → New deployment.
+6. Select Web app.
+7. Configure:
+    a. Execute as: Me
+    b. Who has access: Anyone
+8. Click Deploy and authorize the script if prompted.
+9. Copy the generated Web App URL.
+10. Replace the URL in the HTML files inside the fetch() function.
 
 Example:
 
